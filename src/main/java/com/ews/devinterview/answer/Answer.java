@@ -13,39 +13,17 @@ public class Answer {
     )
     private Long id;
     private String text;
-
-    public Answer() {}
-
-    public Answer(String text) {
-        this.text = text;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "question_id")
+//    private Question question;
 
     @Override
     public String toString() {
         return "Answer{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", question=" + question +
+//                ", question=" + question +
                 '}';
     }
 }

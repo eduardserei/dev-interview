@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(
@@ -16,34 +16,25 @@ public class Question {
     private Long id;
     private String text;
 
-    public Question() {}
+//    @OneToMany(
+//            mappedBy = "question",
+//            cascade = CascadeType.ALL,
+//            orphanRemoval = true
+//    )
+//    private List<Answer> answers = new ArrayList<>();
 
-    public Question(String text, List<Answer> answers) {
-        this.text = text;
-        this.answers = answers;
-    }
-
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answers = new ArrayList<>();
+    public Question(){}
 
     public Long getId() {
         return id;
-    }
-
-    public String getText() {
-        return text;
     }
 
     public void setText(String text) {
         this.text = text;
     }
 
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public String getText() {
+        return text;
     }
 
     @Override
@@ -51,7 +42,7 @@ public class Question {
         return "Question{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", answers=" + answers.toString() +
+//                ", answers=" + answers.toString() +
                 '}';
     }
 }
