@@ -1,5 +1,6 @@
 package com.ews.devinterview.question;
 
+import com.ews.devinterview.answer.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,5 +21,10 @@ public class QuestionController {
     @PostMapping
     private Optional<Question> createQuestion(@RequestBody Question question) {
         return questionService.createQuestion(question);
+    }
+
+    @PutMapping("{questionId}/answer")
+    private Question addAnswer(@PathVariable Long questionId, @RequestBody Answer answer) {
+        return questionService.addAnswer(questionId, answer);
     }
 }

@@ -3,27 +3,30 @@ package com.ews.devinterview.answer;
 import com.ews.devinterview.question.Question;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table
+@Table(name = "answers")
 public class Answer {
     @Id
     @GeneratedValue(
-            strategy = GenerationType.AUTO
+            strategy = GenerationType.IDENTITY
     )
     private Long id;
     private String text;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "question_id")
-//    private Question question;
 
-    @Override
-    public String toString() {
-        return "Answer{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-//                ", question=" + question +
-                '}';
+    @ManyToOne(targetEntity = Question.class)
+    private Question question;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }
